@@ -1,0 +1,536 @@
+/* =====================================================
+   TEM-JABÁ
+   atms.css
+===================================================== */
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    padding-top:80px;
+
+    color:#222;
+
+    background:
+
+    linear-gradient(
+
+    rgba(0,0,0,.45),
+
+    rgba(0,0,0,.45)
+
+    ),
+
+    url("serra da leba.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+nav{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:30px;
+
+    padding:16px;
+
+    background:
+
+    linear-gradient(
+
+    90deg,
+
+    #008cff,
+
+    #00c6ff
+
+    );
+
+    box-shadow:0 5px 20px rgba(0,0,0,.25);
+
+    z-index:999;
+
+}
+
+nav a{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:#ffe600;
+
+}
+
+nav a:not(:last-child)::after{
+
+    content:"|";
+
+    margin-left:30px;
+
+    color:white;
+
+}
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.atm-page{
+
+    width:92%;
+
+    max-width:700px;
+
+    margin:40px auto;
+
+    padding:35px;
+
+    background:rgba(255,255,255,.95);
+
+    border-radius:20px;
+
+    box-shadow:
+
+    0 15px 40px rgba(0,0,0,.25);
+
+}
+
+/* ==========================
+   TÍTULOS
+========================== */
+
+h1{
+
+    text-align:center;
+
+    color:#0066cc;
+
+    margin-bottom:15px;
+
+}
+
+h2{
+
+    margin:30px 0 15px;
+
+    color:#333;
+
+}
+
+/* ==========================
+   ESTADO
+========================== */
+
+.atm-status{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.status{
+
+    display:inline-block;
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+}
+
+.money{
+
+    background:#dfffe2;
+
+    color:#0a8a2a;
+
+}
+
+.nomoney{
+
+    background:#ffe2e2;
+
+    color:#d10000;
+
+}
+
+.queue{
+
+    background:#fff4d2;
+
+    color:#b87400;
+
+}
+
+.offline{
+
+    background:#ececec;
+
+    color:#666;
+
+}
+
+#lastUpdate{
+
+    display:block;
+
+    margin-top:12px;
+
+    color:#777;
+
+}
+
+/* ==========================
+   FORMULÁRIO
+========================== */
+
+.form-card,
+
+.comments-card{
+
+    margin-top:25px;
+
+    padding:25px;
+
+    background:#fff;
+
+    border-radius:15px;
+
+    box-shadow:
+
+    0 8px 20px rgba(0,0,0,.10);
+
+}
+
+input,
+
+textarea{
+
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid #ccc;
+
+    border-radius:10px;
+
+    margin-top:8px;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+input:focus,
+
+textarea:focus{
+
+    outline:none;
+
+    border-color:#008cff;
+
+    box-shadow:
+
+    0 0 10px rgba(0,140,255,.3);
+
+}
+
+textarea{
+
+    min-height:120px;
+
+    resize:vertical;
+
+}
+
+/* ==========================
+   RADIO BUTTONS
+========================== */
+
+.status-options{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    margin:20px 0;
+
+}
+
+.status-options label{
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+}
+
+/* ==========================
+   BOTÃO
+========================== */
+
+button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#0077ff;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#005fcc;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================
+   COMENTÁRIOS
+========================== */
+
+#comments{
+
+    margin-top:20px;
+
+}
+
+.comment{
+
+    background:#f5f5f5;
+
+    border-left:5px solid #0077ff;
+
+    border-radius:10px;
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+}
+
+.comment strong{
+
+    color:#0055aa;
+
+}
+
+.comment small{
+
+    display:block;
+
+    margin-top:10px;
+
+    color:#777;
+
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.footer{
+
+    margin-top:50px;
+
+    text-align:center;
+
+    color:white;
+
+    padding:20px;
+
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+
+@media(max-width:768px){
+
+body{
+
+    padding-top:130px;
+
+    background-attachment:scroll;
+
+}
+
+nav{
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+nav a:not(:last-child)::after{
+
+    display:none;
+
+}
+
+.atm-page{
+
+    padding:20px;
+
+}
+
+h1{
+
+    font-size:26px;
+
+}
+
+button{
+
+    font-size:15px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.atm-page{
+
+    width:95%;
+
+}
+
+h1{
+
+    font-size:22px;
+
+}
+
+h2{
+
+    font-size:20px;
+
+}
+
+input,
+
+textarea{
+
+    font-size:14px;
+
+}
+
+}
+
+/* Segurança e acessibilidade */
+
+
+button,
+a,
+input,
+textarea{
+
+-webkit-tap-highlight-color:transparent;
+
+}
+
+
+
+img{
+
+max-width:100%;
+
+height:auto;
+
+}
+
+
+
+textarea{
+
+font-family:Arial,Helvetica,sans-serif;
+
+}
+
+
+
+@media(max-width:600px){
+
+.atm-page{
+
+width:96%;
+
+padding:15px;
+
+}
+
+
+.status{
+
+font-size:14px;
+
+}
+
+
+}

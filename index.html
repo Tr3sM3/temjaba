@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+  <meta name="theme-color" content="#0077ff">
+
+<meta name="author" content="TRÊS-M">
+
+<meta name="robots" content="index, follow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TEM-JABÁ</title>
+
+    <meta name="description"
+        content="Verifique em tempo real se o ATM tem dinheiro, fila ou está indisponível antes de sair de casa.">
+
+    <link rel="icon" type="image/png" href="logotemjaba.png">
+
+    <link rel="stylesheet" href="Homepage.css">
+
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+
+<nav>
+
+    <a href="index.html">INÍCIO</a>
+
+    <a href="SOBRENOS.html">SOBRE NÓS</a>
+
+    <a href="#map">MAPA</a>
+
+    <a href="#contacto">CONTACTO</a>
+
+</nav>
+
+<!-- ===================== POPUP ===================== -->
+
+<div id="popup" class="popup">
+
+    <div class="popup-content">
+
+       <span class="close" id="closePopup">&times;</span>
+
+        <h2>❤️ APOIE O TEM-JABÁ</h2>
+
+        <p>
+
+            Obrigado por utilizar a nossa plataforma.
+
+        </p>
+
+        <p>
+
+            A sua contribuição ajuda-nos a manter a aplicação online e a melhorar o serviço.
+
+        </p>
+
+        <strong>IBAN-BAI</strong>
+
+        <p>004000007931833310161</p>
+
+        <strong>IBAN-ATLANTICO</strong>
+
+        <p>005500004128724110193</p>
+
+        <strong>EXPRESS</strong>
+
+        <p>+244 923 625 312</p>
+
+    </div>
+
+</div>
+
+<!-- ===================== SPLASH ===================== -->
+
+<div id="splash">
+
+<img 
+    src="logotemjaba.png"
+    alt="TEM-JABÁ"
+    decoding="async"
+    class="logoeffect">
+
+</div>
+
+<!-- ===================== HERO ===================== -->
+
+<header class="hero">
+
+<img 
+    src="logotemjaba.png"
+    alt="TEM-JABÁ"
+    decoding="async"
+    class="logo">
+
+<h1>
+
+Descubra antes de sair de casa
+
+se o ATM tem dinheiro.
+
+</h1>
+
+<p>
+
+Informação atualizada pela comunidade em tempo real.
+
+</p>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchATM"
+placeholder="🔍 Pesquisar ATM...">
+
+<div id="suggestions"></div>
+
+</div>
+
+
+</header>
+
+<!-- ===================== VIDEO ===================== -->
+
+<section class="video-container">
+
+<video autoplay muted loop playsinline>
+
+<source src="slidvideo.mp4"
+
+type="video/mp4">
+
+</video>
+
+</section>
+
+<!-- ===================== SOBRE ===================== -->
+
+<section class="container">
+
+<div class="box">
+
+<h2>TEM-JABÁ</h2>
+
+<p>
+
+Uma plataforma colaborativa que permite verificar o estado dos ATM antes da deslocação.
+
+</p>
+
+</div>
+
+<div class="box">
+
+<h2>Como funciona</h2>
+
+<p>
+
+🟢 Tem dinheiro
+
+<br>
+
+🔴 Sem dinheiro
+
+<br>
+
+⚠️ Fora de serviço
+
+<br>
+
+👥 Fila longa
+
+</p>
+
+</div>
+
+<div class="box">
+
+<h2>Apoie o Projeto</h2>
+
+<p>
+
+Ajude-nos a manter a plataforma ativa através de uma doação.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===================== ATM ===================== -->
+
+<section>
+  
+
+<h2 class="section-title">
+
+ATM Disponíveis
+
+</h2>
+
+<div class="atm-container">
+
+<div class="atm-box">
+
+<a href="kiatmQ2.html">
+
+
+<img
+
+loading="lazy"
+
+src="ATM-Multicaixa1.jpg"
+
+alt="ATM Banco BIC Q2">
+
+<h3>ATM BANCO BIC Q2 <br> KILAMBA</h3>
+
+<p id="status-BIC_Q2" class="status">
+⚪ Informação insuficiente
+</p>
+
+</a>
+
+</div>
+
+<div class="atm-box">
+
+<a href="kiatmQ3.html">
+
+<img
+
+loading="lazy"
+
+src="ATM-Multicaixa1.jpg"
+
+alt="ATM BANCO BCS Q3">
+
+<h3>ATM BANCO BCS Q3 <br> KILAMBA </h3>
+
+<p id="status-BCS_Q3" class="status">
+⚪ Informação insuficiente
+</p>
+
+</a>
+
+</div>
+
+<div class="atm-box">
+
+<a href="kiatmF4.html">
+
+<img
+
+loading="lazy"
+
+src="ATM-Multicaixa1.jpg"
+
+alt="ATM BANCO BAI F4">
+
+<h3>ATM BANCO BAI F4 <br> KILAMBA </h3>
+
+<p id="status-BAI_F4" class="status">
+⚪ Informação insuficiente
+</p>
+
+</a>
+
+</div>
+
+<div class="atm-box">
+
+<a href="kiatmF1.html">
+
+<img
+
+loading="lazy"
+
+src="ATM-Multicaixa1.jpg"
+
+alt="ATM BANCO BAI F1">
+
+<h3>ATM BANCO BAI F1 <br> KILAMBA </h3>
+
+<p id="status-BAI_F1" class="status">
+⚪ Informação insuficiente
+</p>
+
+</a>
+
+</div>
+
+<div class="atm-box">
+    
+<a href="kiatmR14.html">
+
+<img
+
+loading="lazy"
+
+src="ATM-Multicaixa1.jpg"
+
+alt="ATM Banco Sol R14">
+
+<h3>ATM BANCO SOL R14 <br> KILAMBA </h3>
+
+<p id="status-SOL_R14" class="status">
+⚪ Informação insuficiente
+</p>
+
+</a>
+
+</div>
+
+<div class="atm-box">
+
+<a href="kiatmL3.html">
+
+<img
+
+loading="lazy"
+
+src="ATM-Multicaixa1.jpg"
+
+alt="ATM BANCO BFA L3">
+
+<h3>ATM BANCO BFA L3 <br> KILAMBA </h3>
+
+<p id="status-BFA_L3" class="status">
+⚪ Informação insuficiente
+</p>
+
+</a>
+
+</div>
+
+
+
+</div>
+
+</section>
+
+<!-- ===================== MAPA ===================== -->
+
+<section>
+
+<h2 class="section-title">
+
+Mapa dos ATM
+
+</h2>
+
+<div id="map"></div>
+
+</section>
+
+<footer id="contacto" class="footer">
+
+<h3>TEM-JABÁ</h3>
+
+<p>Powered by TEM-JABÁ</p>
+
+<p>Desenvolvido por TRÊS-M</p>
+
+<p>Email: temjabaao@gmail.com</p>
+
+<p>© 2026 Todos os direitos reservados.</p>
+
+</footer>
+
+<script type="module" src="atms.js"></script>
+
+
+<script defer src="map.js"></script>
+
+<script type="module" src="homepage.js"></script>
+
+
+<noscript>
+
+<div class="noscript">
+
+Este site necessita de JavaScript para funcionar corretamente.
+
+</div>
+
+</noscript>
+
+
+</body>
+
+</html>
