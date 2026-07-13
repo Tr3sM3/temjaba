@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+
+<meta name="robots" content="index,follow">
+
+<meta name="theme-color" content="#0077ff">
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>ATM BANCO BCA L15 | TEM-JABÁ</title>
+
+<link rel="icon"
+type="image/png"
+href="logotemjaba.png">
+
+<link rel="stylesheet"
+href="atms.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+<a href="index.html">INÍCIO</a>
+
+<a href="SOBRENOS.html">SOBRE NÓS</a>
+
+<a href="index.html#map">MAPA</a>
+
+</nav>
+
+<!-- ================= CONTEÚDO ================= -->
+
+<main class="atm-page">
+
+<h1>
+
+🏧 ATM BANCO BCA L15 KILAMBA
+
+</h1>
+
+<div class="atm-status">
+
+<span class="status money">
+
+🟢 Estado disponível
+
+</span>
+
+<small id="lastUpdate">
+
+Última atualização: Agora
+
+</small>
+
+</div>
+
+<section class="form-card">
+
+<h2>
+
+Atualizar Estado
+
+</h2>
+
+<input
+
+id="name"
+
+type="text"
+
+maxlength="30"
+
+autocomplete="name"
+
+placeholder="O seu nome">
+
+<div class="status-options">
+
+<label>
+
+<input
+
+type="radio"
+
+name="status"
+
+value="Tem dinheiro">
+
+🟢 Tem dinheiro
+
+</label>
+
+<label>
+
+<input
+
+type="radio"
+
+name="status"
+
+value="Não tem dinheiro">
+
+🔴 Sem dinheiro
+
+</label>
+
+<label>
+
+<input
+
+type="radio"
+
+name="status"
+
+value="Fila longa">
+
+👥 Fila longa
+
+</label>
+
+<label>
+
+<input
+
+type="radio"
+
+name="status"
+
+value="Fora de serviço">
+
+⚠️ Fora de serviço
+
+</label>
+
+</div>
+
+<textarea
+
+id="comment"
+
+maxlength="250"
+
+placeholder="Observação (opcional)">
+
+</textarea>
+
+<button id="sendComment">
+    Publicar Informação
+</button>
+
+</section>
+
+<section class="comments-card">
+
+<h2>
+
+Informações Recentes
+
+</h2>
+
+<div id="comments">
+
+</div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+
+Powered by <strong>TEM-JABÁ</strong>
+
+</footer>
+
+<script>
+window.atmID = "BCA_L15";
+</script>
+
+<script type="module" src="atms.js"></script>
+
+</body>
+
+</html>

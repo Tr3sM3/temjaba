@@ -57,22 +57,34 @@ lng:13.269702,
 pagina:"kiatmQ3.html"
 },
 
+{
+nome:"ATM BANCO BCS A4",
+lat:-8.994543,
+lng: 13.254534,
+pagina:"kiatmA4.html"
+},
+
 
 {
-nome:"ATM BANCO SOL R14",
+nome:"ATM BANCO SOL R18",
 lat:-8.995649,
 lng:13.270003,
-pagina:"kiatmR14.html"
+pagina:"kiatmR18.html"
 },
-
 
 {
-nome:"ATM BANCO BFA L3",
+nome:"ATM BANCO BFA L13",
 lat:-8.991974,
 lng:13.269734,
-pagina:"kiatmL3.html"
+pagina:"kiatmL13.html"
 },
 
+{
+nome:"ATM BANCO BCA L15",
+lat:-8.994557,  
+lng: 13.268853,
+pagina:"kiatmL15.html"
+},
 
 {
 nome:"ATM BANCO BAI F4",
@@ -80,7 +92,6 @@ lat:-8.995435,
 lng:13.263868,
 pagina:"kiatmF4.html"
 },
-
 
 {
 nome:"ATM BANCO BAI F1",

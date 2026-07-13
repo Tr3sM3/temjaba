@@ -28,13 +28,17 @@ const ATM_LIST=[
 
 "BCS_Q3",
 
-"SOL_R14",
+"SOL_R18",
 
-"BFA_L3",
+"BFA_L13",
 
 "BAI_F4",
 
-"BAI_F1"
+"BAI_F1",
+
+"BCS_A4",
+
+"BCA_L15"
 
 ];
 
@@ -304,28 +308,35 @@ nome:"ATM BANCO BCS Q3 KILAMBA",
 link:"kiatmQ3.html"
 },
 
+{
+nome:"ATM BANCO BCS A4 KILAMBA",
+link:"kiatmA4.html"
+},
+
+{
+nome:"ATM BANCO BCA L15 KILAMBA",
+link:"kiatmL15.html"
+},
+
 
 {
 nome:"ATM BANCO BAI F4 KILAMBA",
 link:"kiatmF4.html"
 },
 
-
 {
 nome:"ATM BANCO BAI F1 KILAMBA",
 link:"kiatmF1.html"
 },
 
-
 {
-nome:"ATM BANCO SOL R14 KILAMBA",
-link:"kiatmR14.html"
+nome:"ATM BANCO SOL R18 KILAMBA",
+link:"kiatmR18.html"
 },
 
-
 {
-nome:"ATM BANCO BFA L3 KILAMBA",
-link:"kiatmL3.html"
+nome:"ATM BANCO BFA L13 KILAMBA",
+link:"kiatmL13.html"
 }
 
 
@@ -408,3 +419,4 @@ suggestions.appendChild(div);
 
 
 }
+
