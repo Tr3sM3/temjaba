@@ -16,11 +16,8 @@ getDocs
 "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 
-
 const DEZ_MINUTOS =
-10 * 60 * 1000;
-
-
+30 * 60 * 1000;
 
 const ATM_LIST=[
 
@@ -38,7 +35,21 @@ const ATM_LIST=[
 
 "BCS_A4",
 
-"BCA_L15"
+"BCA_L15",
+
+"BIC_B9",
+
+"BCS_X2",
+
+"BFA_ESCOLA",
+
+"KEVE_PNOIVA",
+
+"KEVE_FRESHMART",
+
+"MULTI_T4",
+
+"MULTI_T5"
 
 ];
 
@@ -143,7 +154,7 @@ DEZ_MINUTOS
 
 
 elemento.textContent=
-"⚪ Informação antiga";
+"⚪Aguardando novas atualizações";
 
 
 return;
@@ -302,7 +313,6 @@ nome:"ATM BANCO BIC Q2 KILAMBA",
 link:"kiatmQ2.html"
 },
 
-
 {
 nome:"ATM BANCO BCS Q3 KILAMBA",
 link:"kiatmQ3.html"
@@ -317,7 +327,6 @@ link:"kiatmA4.html"
 nome:"ATM BANCO BCA L15 KILAMBA",
 link:"kiatmL15.html"
 },
-
 
 {
 nome:"ATM BANCO BAI F4 KILAMBA",
@@ -337,7 +346,42 @@ link:"kiatmR18.html"
 {
 nome:"ATM BANCO BFA L13 KILAMBA",
 link:"kiatmL13.html"
-}
+},
+
+{
+nome:"ATM BANCO BCS X2 KILAMBA",
+link:"kiatmX2.html"
+},
+
+{
+nome:"MULTICAIXA T5 KILAMBA",
+link:"kiatmLT5.html"
+},
+
+{
+nome:"MULTICAIXA T4 KILAMBA",
+link:"kiatmLT4.html"
+},
+
+{
+nome:"ATM BANCO KEVE PARQUE DAS NOIVAS KILAMBA",
+link:"kiatmPNOIVA.html"
+},
+
+{
+nome:"ATM BANCO KEVE KILAMBA FRESHMART ",
+link:"kiatmFRESHMART.html"
+},
+
+{
+nome:"ATM BANCO BIC B9 KILAMBA ",
+link:"kiatmB9.html"
+},
+
+{
+nome:"ATM BANCO KEVE PARQUE DAS NOIVAS KILAMBA",
+link:"kiatmPNOIVA.html"
+},
 
 
 ];

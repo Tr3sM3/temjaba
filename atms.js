@@ -110,7 +110,7 @@ return (
 
 Date.now() - Number(ultimo)
 
-) > 120000;
+) > 20000;
 
 
 }

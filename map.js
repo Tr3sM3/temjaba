@@ -49,7 +49,6 @@ lng:13.269662,
 pagina:"kiatmQ2.html"
 },
 
-
 {
 nome:"ATM BANCO BCS Q3",
 lat:-8.996174,
@@ -63,7 +62,6 @@ lat:-8.994543,
 lng: 13.254534,
 pagina:"kiatmA4.html"
 },
-
 
 {
 nome:"ATM BANCO SOL R18",
@@ -94,12 +92,46 @@ pagina:"kiatmF4.html"
 },
 
 {
-nome:"ATM BANCO BAI F1",
+nome:"BANCO KEVE KILAMBA FRESHMART",
 lat:-8.994728,
 lng:13.262677,
-pagina:"kiatmF1.html"
-}
+pagina:"kiatmFRESHMART.html"
+},
 
+{
+nome:"BANCO BFA ESCOLA KILAMBA",
+lat:-8.994728,
+lng:13.262677,
+pagina:"kiatmESCOLA.html"
+},
+
+{
+nome:"ATM BANCO BIC B9",
+lat:-8.994502,
+lng:13.258985,
+pagina:"kiatmB9.html"
+},
+
+{
+nome:"MULTICAIXA T5",
+lat:-8.994827,
+lng:13.280154,
+pagina:"kiatmT5.html"
+},
+
+{
+nome:"MULTICAIXA T4",
+lat:-8.994856,
+lng:13.279661,
+pagina:"kiatmT4.html"
+},
+
+{
+nome:"ATM BANCO BCS X2 KILAMBA",
+lat:-9.003109,  
+lng:13.271749,
+pagina:"kiatmX2.html"
+},
 
 ];
 
