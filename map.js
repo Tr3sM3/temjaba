@@ -92,7 +92,7 @@ pagina:"kiatmF4.html"
 },
 
 {
-nome:"BANCO KEVE KILAMBA FRESHMART",
+nome:"BANCO KEVE FRESHMART KILAMBA",
 lat:-8.994728,
 lng:13.262677,
 pagina:"kiatmFRESHMART.html"

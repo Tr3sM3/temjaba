@@ -379,8 +379,8 @@ link:"kiatmB9.html"
 },
 
 {
-nome:"ATM BANCO KEVE PARQUE DAS NOIVAS KILAMBA",
-link:"kiatmPNOIVA.html"
+nome:"ATM BANCO BFA ESCOLA KILAMBA",
+link:"kiatmESCOLA.html"
 },
 
 
