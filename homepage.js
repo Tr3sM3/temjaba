@@ -49,7 +49,7 @@ const ATM_LIST=[
 
 "MULTI_T4",
 
-"MULTI_T5"
+"MULTI_T5",
 
 ];
 
@@ -355,12 +355,12 @@ link:"kiatmX2.html"
 
 {
 nome:"MULTICAIXA T5 KILAMBA",
-link:"kiatmLT5.html"
+link:"kiatmT5.html"
 },
 
 {
 nome:"MULTICAIXA T4 KILAMBA",
-link:"kiatmLT4.html"
+link:"kiatmT4.html"
 },
 
 {
