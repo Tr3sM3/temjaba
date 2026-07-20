@@ -133,8 +133,14 @@ lng:13.271749,
 pagina:"kiatmX2.html"
 },
 
-];
+{
+nome:"ATM BANCO KEVE PARQUE DAS NOIVAS KILAMBA",
+lat:-8.99874,  
+lng: 13.253416,
+pagina:"kiatmPNOIVA.html"
+},
 
+];
 
 
 
