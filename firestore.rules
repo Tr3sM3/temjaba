@@ -8,9 +8,12 @@ service cloud.firestore {
     match /comentarios/{id} {
 
 
+      // Qualquer pessoa pode consultar informações dos ATM
       allow read: if true;
 
 
+
+      // Criar comentário
       allow create: if
 
         request.resource.data.atm is string
@@ -21,14 +24,32 @@ service cloud.firestore {
 
         && request.resource.data.comment is string
 
-        && request.resource.data.time is number;
+        && request.resource.data.time == request.time
+
+        && request.resource.data.name.size() <= 30
+
+        && request.resource.data.comment.size() <= 250
+
+        && request.resource.data.status in [
+
+          "Tem dinheiro",
+
+          "Não tem dinheiro",
+
+          "Fila longa",
+
+          "Fora de serviço"
+
+        ];
 
 
+
+
+      // Não permite alterar nem apagar
       allow update, delete: if false;
 
 
     }
-
 
   }
 

@@ -1,6 +1,6 @@
 // ======================================================
 // TEM-JABÁ
-// atms.js v1.1 SECURITY
+// atms.js v1.2 SECURITY
 // ======================================================
 
 
@@ -15,10 +15,12 @@ getDocs,
 query,
 where,
 orderBy,
-limit
+limit,
+serverTimestamp
 
 } from 
 "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
 
 
 
@@ -70,16 +72,20 @@ const STATUS_VALIDOS = [
 // ============================
 
 
-function limparTexto(text){
+function limparTexto(text, limite = 250){
 
 
 return text
+
+.normalize("NFKC")
+
+.replace(/\s+/g," ")
 
 .trim()
 
 .replace(/[<>]/g,"")
 
-.substring(0,250);
+.substring(0, limite);
 
 
 }
@@ -88,10 +94,16 @@ return text
 
 
 
+// ============================
+// Bloqueio 2 minutos
+// ============================
+
+
 function podeEnviar(){
 
 
 const ultimo =
+
 localStorage.getItem(
 "ultimoComentario"
 );
@@ -108,9 +120,11 @@ return true;
 
 return (
 
-Date.now() - Number(ultimo)
+Date.now() -
 
-) > 20000;
+Number(ultimo)
+
+) > 120000;
 
 
 }
@@ -119,12 +133,26 @@ Date.now() - Number(ultimo)
 
 
 
+// ============================
+// Tempo
+// ============================
+
+
 function timeAgo(time){
 
 
+if(!time)
+
+return "Agora mesmo";
+
+
+
 const segundos =
+
 Math.floor(
-(Date.now()-time)/1000
+
+(Date.now() - time) / 1000
+
 );
 
 
@@ -136,7 +164,8 @@ return "Agora mesmo";
 
 
 const minutos =
-Math.floor(segundos/60);
+
+Math.floor(segundos / 60);
 
 
 
@@ -145,17 +174,15 @@ if(minutos < 60)
 return `Há ${minutos} minuto(s)`;
 
 
-
 const horas =
-Math.floor(minutos/60);
+
+Math.floor(minutos / 60);
 
 
 
 return `Há ${horas} hora(s)`;
 
-
 }
-
 
 
 
@@ -173,7 +200,7 @@ if(!podeEnviar()){
 
 
 alert(
-"Aguarde alguns minutos antes de enviar outra informação."
+"Aguarde 2 minutos antes de enviar outra informação."
 );
 
 
@@ -185,22 +212,32 @@ return;
 
 
 const name =
+
 limparTexto(
-nameInput.value
+nameInput.value,
+30
 );
+
 
 
 
 const comment =
+
 limparTexto(
-commentInput.value
+commentInput.value,
+250
 );
 
 
 
+
+
 const status =
+
 document.querySelector(
+
 'input[name="status"]:checked'
+
 );
 
 
@@ -222,6 +259,7 @@ return;
 
 
 
+
 if(!status){
 
 
@@ -237,10 +275,12 @@ return;
 
 
 
+
 if(
 !STATUS_VALIDOS.includes(
 status.value
 )
+
 ){
 
 
@@ -271,6 +311,7 @@ db,
 
 
 atm:
+
 window.atmID,
 
 
@@ -278,14 +319,18 @@ name:name,
 
 
 status:
+
 status.value,
 
 
-comment:comment,
+comment:
+
+comment || "Sem observações.",
 
 
 time:
-Date.now()
+
+serverTimestamp()
 
 
 }
@@ -324,15 +369,17 @@ mostrarComentarios();
 
 
 
-
 }
 
 catch(error){
 
 
 console.error(
+
 "Erro ao publicar:",
+
 error
+
 );
 
 
@@ -353,8 +400,7 @@ alert(
 
 
 
-window.addComment =
-addComment;
+window.addComment = addComment;
 
 
 
@@ -369,15 +415,17 @@ addComment;
 function limparFormulario(){
 
 
+
 if(nameInput)
 
-nameInput.value="";
+nameInput.value = "";
+
 
 
 
 if(commentInput)
 
-commentInput.value="";
+commentInput.value = "";
 
 
 
@@ -386,20 +434,22 @@ commentInput.value="";
 document
 
 .querySelectorAll(
+
 'input[name="status"]'
+
 )
 
 .forEach(
 
 radio =>
 
-radio.checked=false
+radio.checked = false
 
 );
 
 
-}
 
+}
 
 
 
@@ -430,8 +480,8 @@ commentsDiv.replaceChildren();
 
 
 const q =
-query(
 
+query(
 
 collection(
 db,
@@ -461,15 +511,14 @@ orderBy(
 
 limit(10)
 
-
 );
 
 
 
 
 
-
 const snapshot =
+
 await getDocs(q);
 
 
@@ -481,19 +530,23 @@ let encontrados = 0;
 
 
 
+snapshot.forEach(doc => {
 
-snapshot.forEach(doc=>{
 
 
-const item =
-doc.data();
+const item = doc.data();
+
 
 
 
 
 if(
 
-Date.now()-item.time
+item.time &&
+
+Date.now() -
+
+item.time.toMillis()
 
 <
 
@@ -502,7 +555,9 @@ Date.now()-item.time
 ){
 
 
+
 criarComentario(item);
+
 
 
 encontrados++;
@@ -518,11 +573,13 @@ encontrados++;
 
 
 
-if(encontrados===0){
+
+if(encontrados === 0){
 
 
 
 commentsDiv.textContent =
+
 "Sem informações recentes.";
 
 
@@ -530,6 +587,7 @@ commentsDiv.textContent =
 if(lastUpdate)
 
 lastUpdate.textContent =
+
 "Última atualização: sem dados";
 
 
@@ -548,7 +606,15 @@ lastUpdate.textContent =
 +
 
 timeAgo(
-snapshot.docs[0].data().time
+
+snapshot.docs[0]
+
+.data()
+
+.time
+
+.toMillis()
+
 );
 
 
@@ -573,8 +639,6 @@ error
 
 
 
-if(commentsDiv)
-
 commentsDiv.textContent =
 
 "Erro ao carregar informações.";
@@ -594,7 +658,6 @@ commentsDiv.textContent =
 
 
 
-
 // ============================
 // Criar comentário visual
 // ============================
@@ -605,27 +668,37 @@ function criarComentario(item){
 
 
 const div =
+
 document.createElement("div");
 
 
+
 div.className =
+
 "comment";
 
 
 
 
+
 const nome =
+
 document.createElement("strong");
 
 
+
 nome.textContent =
+
 item.name;
 
 
 
 
+
 const estado =
+
 document.createElement("p");
+
 
 
 estado.textContent =
@@ -641,7 +714,9 @@ item.status;
 
 
 const texto =
+
 document.createElement("p");
+
 
 
 texto.textContent =
@@ -655,12 +730,18 @@ item.comment ||
 
 
 const data =
+
 document.createElement("small");
+
 
 
 data.textContent =
 
-timeAgo(item.time);
+timeAgo(
+
+item.time.toMillis()
+
+);
 
 
 
@@ -681,12 +762,12 @@ data
 
 
 
+
 commentsDiv.appendChild(div);
 
 
 
 }
-
 
 
 
@@ -709,7 +790,6 @@ mostrarComentarios,
 60000
 
 );
-
 
 
 
