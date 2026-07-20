@@ -1,6 +1,6 @@
 // ======================================================
 // TEM-JABÁ
-// homepage.js v1.1
+// homepage.js v1.2
 // ======================================================
 
 
@@ -16,8 +16,15 @@ getDocs
 "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
 
-const DEZ_MINUTOS =
-30 * 60 * 1000;
+
+// ===================================
+// TEMPO DO ESTADO ATM
+// ===================================
+
+const TEMPO_ESTADO =
+60 * 60 * 1000; // 1 hora
+
+
 
 const ATM_LIST=[
 
@@ -54,8 +61,6 @@ const ATM_LIST=[
 ];
 
 
-const TEMPO_ESTADO =
-60 * 60 * 1000; // 1 hora
 
 
 // ===================================
@@ -92,15 +97,22 @@ if(
 !dados.time ||
 !dados.status
 )
+
 return;
 
 
 
+
 if(
+
 !ultimos[dados.atm]
+
 ||
-dados.time >
-ultimos[dados.atm].time
+
+dados.time.toMillis() >
+
+ultimos[dados.atm].time.toMillis()
+
 ){
 
 
@@ -128,7 +140,9 @@ document.getElementById(
 
 
 if(!elemento)
+
 return;
+
 
 
 
@@ -137,11 +151,12 @@ ultimos[atm];
 
 
 
+
 if(!ultimo){
 
 
-elemento.textContent=
-"⚪ Sem informação";
+elemento.textContent =
+"⚪ Informação insuficiente";
 
 
 return;
@@ -150,13 +165,23 @@ return;
 
 
 
+
+
 if(
-Date.now() - ultimo.time.toMillis() >
+
+Date.now() -
+
+ultimo.time.toMillis()
+
+>
+
 TEMPO_ESTADO
+
 ){
 
 
-elemento.textContent=
+elemento.textContent =
+
 "⚪ Aguardando novas atualizações";
 
 
@@ -167,14 +192,19 @@ return;
 
 
 
+
+
 switch(ultimo.status){
 
 
 
 case "Tem dinheiro":
 
-elemento.textContent=
+
+elemento.textContent =
+
 "🟢 Tem dinheiro";
+
 
 break;
 
@@ -182,8 +212,11 @@ break;
 
 case "Não tem dinheiro":
 
-elemento.textContent=
+
+elemento.textContent =
+
 "🔴 Sem dinheiro";
+
 
 break;
 
@@ -191,8 +224,11 @@ break;
 
 case "Fila longa":
 
-elemento.textContent=
+
+elemento.textContent =
+
 "👥 Fila longa";
+
 
 break;
 
@@ -200,8 +236,11 @@ break;
 
 case "Fora de serviço":
 
-elemento.textContent=
+
+elemento.textContent =
+
 "⚠️ Fora de serviço";
+
 
 break;
 
@@ -209,8 +248,10 @@ break;
 
 default:
 
-elemento.textContent=
-"⚪ Sem informação";
+
+elemento.textContent =
+
+"⚪ Informação insuficiente";
 
 
 }
@@ -227,8 +268,11 @@ catch(error){
 
 
 console.error(
+
 "Erro ao buscar ATM:",
+
 error
+
 );
 
 
@@ -238,32 +282,60 @@ error
 
 
 }
+
+
+
+
+
+atualizarEstados();
+
+
+
+setInterval(
+
+atualizarEstados,
+
+60000
+
+);
+
+
+
+
+
+
 // ===================================
 // POPUP DE APOIO
 // ===================================
 
 
 document.addEventListener(
+
 "DOMContentLoaded",
+
 ()=>{
 
 
 const popup =
+
 document.getElementById("popup");
 
 
+
 const closeBtn =
+
 document.getElementById("closePopup");
 
 
 
 if(
-popup &&
-closeBtn
+
+popup && closeBtn
+
 ){
 
 
-closeBtn.onclick=()=>{
+closeBtn.onclick = ()=>{
 
 
 popup.style.display="none";
@@ -278,17 +350,24 @@ popup.style.display="none";
 
 });
 
+
+
+
 // ===================================
 // PESQUISA ATM
 // ===================================
 
 
 const searchInput =
+
 document.getElementById("searchATM");
 
 
+
 const suggestions =
+
 document.getElementById("suggestions");
+
 
 
 
@@ -356,19 +435,19 @@ link:"kiatmPNOIVA.html"
 },
 
 {
-nome:"ATM BANCO KEVE KILAMBA FRESHMART ",
+nome:"ATM BANCO KEVE KILAMBA FRESHMART",
 link:"kiatmFRESHMART.html"
 },
 
 {
-nome:"ATM BANCO BIC B9 KILAMBA ",
+nome:"ATM BANCO BIC B9 KILAMBA",
 link:"kiatmB9.html"
 },
 
 {
 nome:"ATM BANCO BFA ESCOLA KILAMBA",
 link:"kiatmESCOLA.html"
-},
+}
 
 
 ];
@@ -381,14 +460,20 @@ if(searchInput){
 
 
 searchInput.addEventListener(
+
 "input",
+
 ()=>{
 
 
 const texto =
+
 searchInput.value
+
 .toLowerCase()
+
 .trim();
+
 
 
 
@@ -397,20 +482,25 @@ suggestions.innerHTML="";
 
 
 if(!texto)
+
 return;
 
 
 
 const resultados =
+
 ATM_SEARCH.filter(
 
 atm =>
 
 atm.nome
+
 .toLowerCase()
+
 .includes(texto)
 
 );
+
 
 
 
@@ -418,18 +508,23 @@ resultados.forEach(atm=>{
 
 
 const div =
+
 document.createElement("div");
 
 
+
 div.textContent =
+
 atm.nome;
 
 
 
-div.onclick=()=>{
+
+div.onclick = ()=>{
 
 
 window.location.href =
+
 atm.link;
 
 
@@ -444,10 +539,10 @@ suggestions.appendChild(div);
 });
 
 
+
 }
 
 );
 
 
 }
-
