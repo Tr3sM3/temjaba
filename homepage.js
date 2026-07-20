@@ -54,6 +54,9 @@ const ATM_LIST=[
 ];
 
 
+const TEMPO_ESTADO =
+60 * 60 * 1000; // 1 hora
+
 
 // ===================================
 // Atualizar estado ATM
@@ -148,13 +151,13 @@ return;
 
 
 if(
-Date.now()-ultimo.time >
-DEZ_MINUTOS
+Date.now() - ultimo.time.toMillis() >
+TEMPO_ESTADO
 ){
 
 
 elemento.textContent=
-"⚪Aguardando novas atualizações";
+"⚪ Aguardando novas atualizações";
 
 
 return;
@@ -235,22 +238,6 @@ error
 
 
 }
-
-
-
-
-atualizarEstados();
-
-
-
-setInterval(
-atualizarEstados,
-60000
-);
-
-
-
-
 // ===================================
 // POPUP DE APOIO
 // ===================================
