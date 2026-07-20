@@ -91,17 +91,17 @@ lng:13.263868,
 pagina:"kiatmF4.html"
 },
 
-{
+{   
 nome:"BANCO KEVE FRESHMART KILAMBA",
-lat:-8.994728,
-lng:13.262677,
+lat:-9.003892,
+lng:13.280855,
 pagina:"kiatmFRESHMART.html"
 },
 
 {
 nome:"BANCO BFA ESCOLA KILAMBA",
-lat:-8.994728,
-lng:13.262677,
+lat:-9.002826,
+lng:13.275016,
 pagina:"kiatmESCOLA.html"
 },
 
