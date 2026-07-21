@@ -91,6 +91,13 @@ lng:13.263868,
 pagina:"kiatmF4.html"
 },
 
+{
+nome:"ATM BANCO BAI F1",
+lat:-8.994744,
+lng:13.262697,
+pagina:"kiatmF1.html"
+},
+
 {   
 nome:"BANCO KEVE FRESHMART KILAMBA",
 lat:-9.003892,
